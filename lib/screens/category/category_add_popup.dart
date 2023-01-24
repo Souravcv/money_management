@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:money_management/db/category/category_db.dart';
 import 'package:money_management/models/category/category_models.dart';
 
 ValueNotifier<CategoryType> selectedCategoryNotifier =
@@ -21,7 +22,7 @@ Future<void> showCaTegoryAddpopup(BuildContext context) async {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: const [
                   RadioButton(title: 'Income', type: CategoryType.income),
@@ -37,7 +38,18 @@ Future<void> showCaTegoryAddpopup(BuildContext context) async {
                     if (_name.isEmpty) {
                       return;
                     }
+                    final _type =selectedCategoryNotifier.value;
+                   final _category = CategoryModel(
+                      id: DateTime.now().microsecondsSinceEpoch.toString(),
+
+                       name: _name,
+
+                        type: _type
+                        );
+                         CategoryDB.instance.insertCategory(_category);
+                         Navigator.of(ctx).pop();
                   },
+
                   child: const Text('Add')),
             )
           ],

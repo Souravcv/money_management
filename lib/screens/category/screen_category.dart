@@ -18,7 +18,7 @@ class _ScreenCategoryState extends State<ScreenCategory>
   void initState() {
     // TODO: implement initState
     _tabController = TabController(length: 2, vsync: this);
-    CategoryDB().getCategorise().then((value) => {});
+    CategoryDB().refreshUI();
     super.initState();
   }
 

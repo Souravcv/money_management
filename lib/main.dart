@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:money_management/models/category/category_models.dart';
+import 'package:money_management/models/transaction/transaction_model.dart';
+import 'package:money_management/screens/add_transaction/screen_add_transaction.dart';
 import 'package:money_management/screens/home/screen_home.dart';
 
 Future<void> main() async {
@@ -11,6 +13,9 @@ Future<void> main() async {
   }
   if (!Hive.isAdapterRegistered(CategoryModelAdapter().typeId)) {
     Hive.registerAdapter(CategoryModelAdapter());
+  }
+  if (!Hive.isAdapterRegistered(TransactionModelAdapter().typeId)) {
+    Hive.registerAdapter(TransactionModelAdapter());
   }
   runApp(const MyApp());
 }
@@ -27,6 +32,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const ScreenHome(),
+      routes: {
+        ScreenaddTransaction.routeName:(ctx)=> const ScreenaddTransaction(),
+      },
+     
     );
   }
 }
