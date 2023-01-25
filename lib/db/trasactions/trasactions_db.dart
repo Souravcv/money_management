@@ -27,7 +27,7 @@ ValueNotifier<List<TransactionModel>>TransactionListNotifier =
 
   @override
   Future<void> addTrasaction(TransactionModel obj) async {
-  final _db = await Hive.openBox(Transaction_Db_Name);
+  final _db = await Hive.openBox<TransactionModel>(Transaction_Db_Name);
  await _db.put(obj.id, obj);
   }
   Future <void> refriesh()async{

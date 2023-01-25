@@ -18,7 +18,7 @@ class ScreenaddTransaction extends StatefulWidget {
 class _ScreenaddTransactionState extends State<ScreenaddTransaction> {
   DateTime? _selectedDate;
   CategoryType? _selectedcategorytype;
-  CategoryModel? _selectedcategorymodel;
+  CategoryModel? selectedcategorymodel;
   String? _categoryID;
   final _purposeTextEditingController = TextEditingController();
   final _amountTextEditingController = TextEditingController();
@@ -129,24 +129,30 @@ class _ScreenaddTransactionState extends State<ScreenaddTransaction> {
                     value: e.id,
                     child: Text(e.name),
                     onTap: (){
-                      _selectedcategorymodel = e;
+                      print(e.toString());
+                      selectedcategorymodel = e;
                     },
                   );
                 }).toList(),
-                onChanged: (SelectedValu) {
+                onChanged: (selectedValu) {
+                  print('jagd');
                   setState(() {
-                    _categoryID = SelectedValu;
+                    _categoryID = selectedValu;
                   });
+                  
                 },
+                onTap: (){},
               ),
               //submit
-              ElevatedButton.icon(
+              ElevatedButton(
                   onPressed: () {
-                    addTrasaction();
+                   
+                     addTrasaction();
+                   
 
                   },
-                  icon: Icon(Icons.check),
-                  label: Text('Submit'))
+                  
+                  child: Text('Submit'))
             ],
           ),
         ),
@@ -154,38 +160,38 @@ class _ScreenaddTransactionState extends State<ScreenaddTransaction> {
     );
   }
 
-  Future<void> addTrasaction() async {
-    final purposeText = _purposeTextEditingController.text;
-    final amountText = _amountTextEditingController.text;
-    if (purposeText.isEmpty) {
+  Future addTrasaction() async {
+    final _purposeText = _purposeTextEditingController.text;
+    final _amountText = _amountTextEditingController.text;
+    if (_purposeText.isEmpty) {
       return;
     }
-    if (amountText.isEmpty) {
+    if (_amountText.isEmpty) {
       return;
     }
-    // if (_categoryID == null) {
-    //   return;
-    // }
+    if (_categoryID == null) {
+      return;
+    }
     if (_selectedDate == null) {
       return;
     }
-    if(_selectedcategorymodel == null){
+    if(selectedcategorymodel == null){
       return;
     }
-   final parsedAmount = double.tryParse(amountText);
-   if(parsedAmount == null){
+   final _parsedAmount = double.tryParse(_amountText);
+   if(_parsedAmount == null){
     return;
    }
     // _selectedDate
     //_selectedcategorytype
     //_categoryID
-   final Model = TransactionModel(
-        Purpose: purposeText,
-        amount: parsedAmount,
+   final _model = TransactionModel(
+        Purpose: _purposeText,
+        amount: _parsedAmount,
         date: _selectedDate!,
         type: _selectedcategorytype!,
-        category: _selectedcategorymodel!);
-      await  TransactionDB.instance.addTrasaction(Model);
+        category: selectedcategorymodel!);
+      await  TransactionDB.instance.addTrasaction(_model);
       Navigator.of(context).pop();
       TransactionDB.instance.refriesh();
 
