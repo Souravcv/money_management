@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import 'package:money_management/db/category/category_db.dart';
 import 'package:money_management/models/category/category_models.dart';
@@ -22,21 +23,35 @@ class ScreenTransaction extends StatelessWidget {
      
       itemBuilder: (ctx,intex){
          final _value = newList[intex];
-      return  Card(
-        elevation: 0,
-        child: ListTile(
-          leading:CircleAvatar(
-            radius: 50,
-            child: Text(
-              parseDate(_value.date),
-             textAlign:TextAlign.center,
-             ),
-             backgroundColor:_value.type == CategoryType.income?Colors.blueGrey:Colors.red ,
-          
-
+      return  Slidable(
+        key:Key( _value.id!),
+        startActionPane:ActionPane(
+          motion: DrawerMotion(), 
+          children: [
+            SlidableAction(onPressed:
+             (ctx){
+              TransactionDB.instance.deleteTransaction(_value.id!);
+             }
+             ,icon:Icons.delete,
+             label: 'delete',
+             )
+          ]) ,
+        child: Card(
+          elevation: 0,
+          child: ListTile(
+            leading:CircleAvatar(
+              radius: 50,
+              child: Text(
+                parseDate(_value.date),
+               textAlign:TextAlign.center,
+               ),
+               backgroundColor:_value.type == CategoryType.income?Colors.blueGrey:Colors.red ,
+            
+            
+            ),
+            title:Text('RS ${_value.amount}') ,
+            subtitle: Text(_value.category.name),
           ),
-          title:Text('RS ${_value.amount}') ,
-          subtitle: Text(_value.category.name),
         ),
       );
 

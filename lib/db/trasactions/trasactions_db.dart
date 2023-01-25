@@ -2,7 +2,6 @@ import 'dart:ffi';
 
 import 'package:flutter/widgets.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:money_management/models/category/category_models.dart';
 import 'package:money_management/models/transaction/transaction_model.dart';
 
 const Transaction_Db_Name ='Transaction-db';
@@ -11,6 +10,7 @@ const Transaction_Db_Name ='Transaction-db';
 abstract class TransactionDbFuctions{
   Future <void> addTrasaction(TransactionModel obj);
   Future <List<TransactionModel>>getAllTransaction();
+  Future <void> deleteTransaction(String id);
   
  
 }
@@ -44,6 +44,17 @@ ValueNotifier<List<TransactionModel>>TransactionListNotifier =
   final _db = await Hive.openBox<TransactionModel>(Transaction_Db_Name);
 
   return _db.values.toList();
+  }
+  
+  @override
+  Future <void> deleteTransaction(String id) async{
+      final _db = await Hive.openBox<TransactionModel>(Transaction_Db_Name);
+     await _db.delete(id);
+     refriesh();
+
+   
+    
+    
   }
 
 }
