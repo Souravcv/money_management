@@ -5,6 +5,8 @@ import 'package:money_management/db/category/category_db.dart';
 import 'package:money_management/models/category/category_models.dart';
 import 'package:money_management/models/transaction/transaction_model.dart';
 
+import '../../db/trasactions/trasactions_db.dart';
+
 class ScreenaddTransaction extends StatefulWidget {
   static const routeName = 'add-transaction';
   const ScreenaddTransaction({super.key});
@@ -141,6 +143,7 @@ class _ScreenaddTransactionState extends State<ScreenaddTransaction> {
               ElevatedButton.icon(
                   onPressed: () {
                     addTrasaction();
+
                   },
                   icon: Icon(Icons.check),
                   label: Text('Submit'))
@@ -182,5 +185,9 @@ class _ScreenaddTransactionState extends State<ScreenaddTransaction> {
         date: _selectedDate!,
         type: _selectedcategorytype!,
         category: _selectedcategorymodel!);
+      await  TransactionDB.instance.addTrasaction(Model);
+      Navigator.of(context).pop();
+      TransactionDB.instance.refriesh();
+
   }
 }
