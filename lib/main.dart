@@ -4,7 +4,8 @@ import 'package:money_management/models/category/category_models.dart';
 import 'package:money_management/models/transaction/transaction_model.dart';
 import 'package:money_management/screens/add_transaction/screen_add_transaction.dart';
 import 'package:money_management/screens/home/screen_home.dart';
-const SAVE_KEY_NAME ="UserLoggedIn";
+
+const SAVE_KEY_NAME = "UserLoggedIn";
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
@@ -27,21 +28,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      
-   
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: const ScreenHome(),
-      
       routes: {
-        ScreenaddTransaction.routeName:(ctx)=> const ScreenaddTransaction(),
-        
+        ScreenaddTransaction.routeName: (ctx) => const ScreenaddTransaction(),
       },
-     
     );
   }
 }
-
-
-
