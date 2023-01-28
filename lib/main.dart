@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:money_management/models/category/category_models.dart';
 import 'package:money_management/models/transaction/transaction_model.dart';
 import 'package:money_management/screens/add_transaction/screen_add_transaction.dart';
 import 'package:money_management/screens/home/screen_home.dart';
 
-const SAVE_KEY_NAME = "UserLoggedIn";
+import 'splash_screen.dart';
+
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
@@ -18,8 +21,13 @@ Future<void> main() async {
   if (!Hive.isAdapterRegistered(TransactionModelAdapter().typeId)) {
     Hive.registerAdapter(TransactionModelAdapter());
   }
+  // FlutterNativeSplash.removeAfter(gotoLogin);
   runApp(const MyApp());
 }
+// Future<void> gotoLogin(BuildContext? context) async {
+//   await Future.delayed(const Duration(seconds: 3));
+   
+//   }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -31,10 +39,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ScreenHome(),
+      home: const SplashScreen(),
       routes: {
         ScreenaddTransaction.routeName: (ctx) => const ScreenaddTransaction(),
       },
     );
   }
+  
 }
