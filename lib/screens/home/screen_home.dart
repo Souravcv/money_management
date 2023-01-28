@@ -13,8 +13,10 @@ class ScreenHome extends StatelessWidget {
     ScreenTransaction(),
     ScreenCategory(),
   ];
+  
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
@@ -47,6 +49,7 @@ class ScreenHome extends StatelessWidget {
         },
         child: const Icon(Icons.add),
       ),
+      
     );
   }
 }

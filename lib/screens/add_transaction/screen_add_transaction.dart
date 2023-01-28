@@ -118,7 +118,7 @@ class _ScreenaddTransactionState extends State<ScreenaddTransaction> {
               //DropdownButton
               //category type
               DropdownButton<String>(
-                hint: Text('Select Category'),
+                hint: const Text('Select Category'),
                 value: _categoryID,
                 items: (_selectedcategorytype == CategoryType.income
                         ? CategoryDB().incomeCategory
@@ -152,7 +152,7 @@ class _ScreenaddTransactionState extends State<ScreenaddTransaction> {
 
                   },
                   
-                  child: Text('Submit'))
+                  child: const Text('Submit'))
             ],
           ),
         ),
