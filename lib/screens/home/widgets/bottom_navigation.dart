@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:money_management/screens/home/screen_home.dart';
 
 class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({super.key});
+  const BottomNavigation({super.key, });
 
   @override
   State<BottomNavigation> createState() => _BottomNavigationState();
@@ -17,16 +17,19 @@ class _BottomNavigationState extends State<BottomNavigation> {
       valueListenable: ScreenHome.selectedIntexNotifier,
       builder:(BuildContext ctx, int updatedIntex, Widget? _){
         return BottomNavigationBar(
-          selectedItemColor:Color.fromARGB(255, 53, 149, 204) ,
-          unselectedItemColor: Color.fromARGB(255, 0, 0, 0),
+           backgroundColor:const Color.fromARGB(255, 67, 47, 99),
+          selectedItemColor:const Color.fromARGB(255, 162, 158, 196) ,
+          unselectedItemColor:const Color.fromARGB(255, 0, 0, 0),
         currentIndex: updatedIntex,
         onTap:(newIndex){
+       
           ScreenHome.selectedIntexNotifier.value = newIndex;
     
         } ,
         items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.category),label: 'Category'),
         BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Transaction'),
-        BottomNavigationBarItem(icon: Icon(Icons.category),label: 'Category')
+         BottomNavigationBarItem(icon: Icon(Icons.perm_identity_sharp),label: 'Me')
       ]);
       } ,
     );

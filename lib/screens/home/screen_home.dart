@@ -20,6 +20,7 @@ class ScreenHome extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
+        backgroundColor:Color.fromARGB(255, 67, 47, 99),
         title: const Text('MONEY MANAGER'),
         centerTitle: true,
       ),
@@ -33,6 +34,7 @@ class ScreenHome extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+         backgroundColor:Color.fromARGB(255, 67, 47, 99),
         onPressed: () {
           if (selectedIntexNotifier.value == 0) {
             print('hello transation');

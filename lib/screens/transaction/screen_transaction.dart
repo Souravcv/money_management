@@ -18,17 +18,24 @@ class ScreenTransaction extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: TransactionDB.instance.TransactionListNotifier,
        builder: (BuildContext ctx, List<TransactionModel>newList, Widget? _){
+        
         return ListView.separated(
       padding:const EdgeInsets.all(10) ,
      
       itemBuilder: (ctx,intex){
+        
          final _value = newList[intex];
       return  Slidable(
         key:Key( _value.id!),
         startActionPane:ActionPane(
+          
           motion: DrawerMotion(), 
+          
           children: [
-            SlidableAction(onPressed:
+            
+            SlidableAction(
+                backgroundColor:Color.fromARGB(255, 129, 63, 194),
+              onPressed:
              (ctx){
               TransactionDB.instance.deleteTransaction(_value.id!);
              }
@@ -40,12 +47,13 @@ class ScreenTransaction extends StatelessWidget {
           elevation: 0,
           child: ListTile(
             leading:CircleAvatar(
+              
               radius: 50,
               child: Text(
                 parseDate(_value.date),
                textAlign:TextAlign.center,
                ),
-               backgroundColor:_value.type == CategoryType.income?Colors.blueGrey:Colors.red ,
+               backgroundColor:_value.type == CategoryType.income?Colors.blueGrey:const Color.fromARGB(255, 212, 14, 0) ,
             
             
             ),
