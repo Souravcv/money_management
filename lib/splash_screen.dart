@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:money_management/screens/home/screen_home.dart';
 
+import 'loginscreen.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -31,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> gotoLogin() async {
   await Future.delayed(const Duration(seconds: 5));
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (ctx) => const ScreenHome()));
+        MaterialPageRoute(builder: (ctx) =>  IntroScreenDemo()));
   }
   
   

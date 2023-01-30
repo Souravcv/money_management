@@ -7,7 +7,7 @@ import 'package:money_management/screens/add_transaction/screen_add_transaction.
 import 'package:money_management/screens/home/screen_home.dart';
 
 import 'splash_screen.dart';
-
+const savekeyname = 'UserLoggedin';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
       routes: {
         ScreenaddTransaction.routeName: (ctx) => const ScreenaddTransaction(),
       },
+      debugShowCheckedModeBanner: false,
     );
   }
   
