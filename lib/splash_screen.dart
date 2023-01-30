@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor:const Color.fromARGB(255, 255, 255, 255),
         body: Center(child: Image.asset('assets/images/WhatsApp Image 2023-01-28 at 3.14.27 PM (1).jpeg',height: 100,)),
     );
   }

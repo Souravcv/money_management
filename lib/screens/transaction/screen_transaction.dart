@@ -40,7 +40,7 @@ class ScreenTransaction extends StatelessWidget {
               TransactionDB.instance.deleteTransaction(_value.id!);
              }
              ,icon:Icons.delete,
-             label: 'delete',
+             label: 'Delete',
              )
           ]) ,
         child: Card(

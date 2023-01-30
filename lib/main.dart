@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:money_management/models/category/category_models.dart';
 import 'package:money_management/models/transaction/transaction_model.dart';
 import 'package:money_management/screens/add_transaction/screen_add_transaction.dart';
-import 'package:money_management/screens/home/screen_home.dart';
+
 
 import 'splash_screen.dart';
 const savekeyname = 'UserLoggedin';

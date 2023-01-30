@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:money_management/screens/home/screen_home.dart';
 
-import 'package:flutter/material.dart';
+
 import 'package:introduction_screen/introduction_screen.dart';
 
 
@@ -55,7 +55,7 @@ class _IntroScreenDemoState extends State<IntroScreenDemo> {
                 ElevatedButton(
                     onPressed: () {
   Navigator.of(context).push(
-        MaterialPageRoute(builder: (ctx) =>  ScreenHome()));
+        MaterialPageRoute(builder: (ctx) => const ScreenHome()));
 
                       setState(() => _status = 'Going to the next Home...');
 
