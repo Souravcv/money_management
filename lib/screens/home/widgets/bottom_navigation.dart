@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:money_management/screens/home/screen_home.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -29,7 +28,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
         items: const [
         BottomNavigationBarItem(icon: Icon(Icons.category),label: 'Category'),
         BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Transaction'),
-         BottomNavigationBarItem(icon: Icon(Icons.perm_identity_sharp),label: 'Me')
+         BottomNavigationBarItem(icon: Icon(Icons.perm_identity_sharp),label: 'Me'),
+         
       ]);
       } ,
     );

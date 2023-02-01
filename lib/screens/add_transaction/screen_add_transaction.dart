@@ -95,10 +95,10 @@ class _ScreenaddTransactionState extends State<ScreenaddTransaction> {
                           });
                         },
                       ),
-                      Text('Income'),
+                      const Text('Income'),
                     ],
                   ),
-                  Row(
+                  Row( 
                     children: [
                       Radio(
                         value: CategoryType.expense,
@@ -110,7 +110,7 @@ class _ScreenaddTransactionState extends State<ScreenaddTransaction> {
                           });
                         },
                       ),
-                      Text('Expense'),
+                      const Text('Expense'),
                     ],
                   ),
                 ],
@@ -128,7 +128,7 @@ class _ScreenaddTransactionState extends State<ScreenaddTransaction> {
                   return DropdownMenuItem(
                     value: e.id,
                     child: Text(e.name),
-                    onTap: (){
+                    onTap: () {
                       print(e.toString());
                       selectedcategorymodel = e;
                     },
@@ -139,19 +139,14 @@ class _ScreenaddTransactionState extends State<ScreenaddTransaction> {
                   setState(() {
                     _categoryID = selectedValu;
                   });
-                  
                 },
-                onTap: (){},
+                onTap: () {},
               ),
               //submit
               ElevatedButton(
                   onPressed: () {
-                   
-                     addTrasaction();
-                   
-
+                    addTrasaction();
                   },
-                  
                   child: const Text('Submit'))
             ],
           ),
@@ -175,25 +170,24 @@ class _ScreenaddTransactionState extends State<ScreenaddTransaction> {
     if (_selectedDate == null) {
       return;
     }
-    if(selectedcategorymodel == null){
+    if (selectedcategorymodel == null) {
       return;
     }
-   final _parsedAmount = double.tryParse(_amountText);
-   if(_parsedAmount == null){
-    return;
-   }
+    final _parsedAmount = double.tryParse(_amountText);
+    if (_parsedAmount == null) {
+      return;
+    }
     // _selectedDate
     //_selectedcategorytype
     //_categoryID
-   final _model = TransactionModel(
+    final _model = TransactionModel(
         Purpose: _purposeText,
         amount: _parsedAmount,
         date: _selectedDate!,
         type: _selectedcategorytype!,
         category: selectedcategorymodel!);
-      await  TransactionDB.instance.addTrasaction(_model);
-      Navigator.of(context).pop();
-      TransactionDB.instance.refriesh();
-
+    await TransactionDB.instance.addTrasaction(_model);
+    Navigator.of(context).pop();
+    TransactionDB.instance.refriesh();
   }
 }
