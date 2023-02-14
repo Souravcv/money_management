@@ -1,79 +1,71 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
-class YouserPage extends StatefulWidget {
+
+
+
+class YouserPage extends StatelessWidget {
   const YouserPage({super.key});
 
   @override
-  State<YouserPage> createState() => _YouserPageState();
-}
-
-class _YouserPageState extends State<YouserPage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-body: Container(
-  padding:const EdgeInsets.all(10) ,
-  child: ListView(
-    children: [
-      TextButton.icon(onPressed: (){FlutterPhoneDirectCaller.callNumber('+91 8075613583');}, icon: Icon(Icons.call), label: Text("Help")),
+      body: SafeArea(child: Column(children: [
+        Center(
+      child: SafeArea(
+        child: Column(
+          children: [
+            SizedBox(height: 350,),
+           
+           SizedBox(height: 20,),
+            ElevatedButton(
+              onPressed: (){
+                showModalBottomSheet(
+                  shape:const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    )
+                  ) ,
+                  context:context ,
+                  builder:(BuildContext context){
+                    Column(children:const [
+                      
+                    ],);
+                     return SizedBox(
+                      height: 300,
+               child:Column(children:  [
+                Padding(padding: EdgeInsets.all(5)),
+              
+                Center(child: Column(
+                  children: [
+                    const SizedBox(height: 50,),
+                    const Text("Manager Your Daily \n   Activiy So Easy",style: TextStyle(fontSize: 30),),
+                    const SizedBox(height: 10,),
+                    const Text('The smart tool is designed to help you\n          manager yourdaily activity'),
+                     const SizedBox(height: 20,),
+                    ElevatedButton(
+                      style:ElevatedButton.styleFrom(primary: Colors.black) ,
+                      onPressed: (){},
+                     child:  Text("Get Started",style: TextStyle(fontSize: 20),),)
+                  ],
+                ),
+                
+                )
+               
+                  
+               ]),
       
-      const SizedBox(height: 10,),
-      Row(
-        children: const [
-          Icon(
-            Icons.person,
-            color: Colors.blue,
-          ),
-            SizedBox(width: 10,),
-            Text("Account",style:TextStyle(fontSize: 22,fontWeight: FontWeight.bold) ,)
-        ],
+                     
+                     );
+                  });
+              }, 
+              child: const Text("click")),
+          ],
+        ),
       ),
-      Divider(height: 20,thickness: 1,),
-        SizedBox(height: 10,),
 
-        buildAccounOption(context,"Socil"),
- 
-
-    ],
-  ),
-),
-
+     ) ],)),
     );
   }
-  GestureDetector buildAccounOption(BuildContext context,String title){
-    return GestureDetector(
-   onTap: (){
-  
-
-   },
-   child:  Padding(
-    padding:const EdgeInsets.symmetric(vertical: 8,horizontal: 20),
-   child: Row(
-
-   mainAxisAlignment: MainAxisAlignment.spaceBetween,  
-   children: [
-    Text(title,style: TextStyle(
-      fontSize: 20,
-      fontWeight: FontWeight.w500,
-      color: Colors.grey[600]
-    ),),
-    const Icon(Icons.arrow_forward,color: Colors.grey,),
-   ], 
-   ),
-   
-   
-   ),
-
-
-
-    );
-  }
-
-
-
 }
+

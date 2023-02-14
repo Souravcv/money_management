@@ -39,15 +39,11 @@ class ScreenHome extends StatelessWidget {
          backgroundColor:const Color.fromARGB(255, 67, 47, 99),
         onPressed: () {
           if (selectedIntexNotifier.value == 0) {
-            // print('hello transation');
+        
             Navigator.of(context).pushNamed(ScreenaddTransaction.routeName);
           } else {
             showCaTegoryAddpopup(context);
-            // print('hello category');
-            // final _sample = CategoryModel
-            // (id: DateTime.now().microsecondsSinceEpoch.toString(),
-            //  name: 'Travel', type: CategoryType.expense);
-            // CategoryDB().insertCategory(_sample);
+          
 
           }
         },
