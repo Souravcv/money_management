@@ -54,7 +54,7 @@ class _IntroScreenDemoState extends State<IntroScreenDemo> {
                 Text(_status),
                 ElevatedButton(
                     onPressed: () {
-  Navigator.of(context).push(
+  Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (ctx) => const ScreenHome()));
 
                       setState(() => _status = 'Going to the next Home...');

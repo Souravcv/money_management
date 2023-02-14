@@ -3,8 +3,6 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:money_management/models/category/category_models.dart';
 import 'package:money_management/models/transaction/transaction_model.dart';
 import 'package:money_management/screens/add_transaction/screen_add_transaction.dart';
-
-
 import 'splash_screen.dart';
 const savekeyname = 'UserLoggedin';
 
